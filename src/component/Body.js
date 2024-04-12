@@ -15,12 +15,17 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560");
+        // const locationData = await fetch('https://ipapi.co/json');
+        // const locationJSON = await locationData.json();
+
+        // const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`);
+        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856`);
 
         const jsonData = await data.json();
 
         setlistOfResturants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilteredResturantsList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log("result =" + jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     };
 
 
@@ -40,6 +45,7 @@ const Body = () => {
                             resturant.info.avgRating > 4
                         ));
                         setfilteredResturantsList(filteredList);
+                        console.log(filteredList)
                     }}>
                         Top Rated Returants
                     </button >

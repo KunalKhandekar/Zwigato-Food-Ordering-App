@@ -1,0 +1,150 @@
+.main-menu-container {
+    border: 2px solid #ffffff;
+    max-width: 900px;
+    margin: auto;
+    margin-block: 25px;
+    min-height: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    padding: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.main-menu-container .top-info > h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.main-menu-container .top-info .basic_info {
+    border: 2px solid #000;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.main-menu-container .top-info .basic_info .first-row {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.main-menu-container .top-info .basic_info .first-row > .star svg {
+    position: relative;
+    top: 3px;
+}
+
+.main-menu-container .top-info .basic_info .cuisines {
+    margin-block: 10px;
+    color: rgb(241, 120, 15);
+    font-size: 16px;
+}
+
+.main-menu-container .top-info .basic_info .time {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+.main-menu-container .top-info .basic_info .delivery {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #707070;
+}
+.main-menu-container .top-info .basic_info .delivery img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.middle_dot {
+    margin-inline: 8px;
+    color: #515151;
+}
+
+/* ========= Menu ============= */
+.menu-loader {
+    margin-block: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-loader > h2 {
+    font-size: 20px;
+    margin-inline: 10px;
+    color: #656464;
+}
+
+.dish {
+    border-bottom: 2px solid #dadada;
+    padding: 5px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dish:last-child {
+    border-bottom: 0px solid #dadada;
+}
+
+.dish > .left-side > .dish_rating > .icon {
+    width: 15px;
+}
+
+.dish > .left-side > .dish_rating {
+    color: green;
+}
+
+.dish > .left-side > .dish_rating > span {
+    color: #000;
+}
+
+.dish_price, .dish_rating {
+    margin-bottom: 8px;
+}
+
+.dish_name {
+    font-size: 22px;
+    width: 520px;
+}
+
+.dish_desc {
+    font-size: 18px;
+    width: 490px;
+    color: #8a8a8a;
+    font-weight: 400;
+}
+
+
+.dish > .right-side {
+    width: 160px;
+    height: 160px;
+    border-radius: 14px;
+    position: relative;
+}
+
+.dish > .right-side > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.dish > .right-side > .add {
+    position: absolute;
+    margin: auto;
+    bottom: -15px;
+    left: 16%;
+    padding: 5px 35px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: rgb(35, 217, 35);
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all .1s;
+}
+
+.dish > .right-side > .add:hover {
+    background-color: #ebe5e5;
+}

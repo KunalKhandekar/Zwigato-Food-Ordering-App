@@ -33,7 +33,7 @@
     margin-right: 15px;
 }
 
-.nav-items>ul>li {
+.nav-items>ul>li>a {
     cursor: pointer;
     padding: 8px 15px;
     border: 1px solid #ffffff;
@@ -41,11 +41,12 @@
     border-radius: 10px;
     background-color: rgb(240, 90, 53);
     transition: all .1s;
+    text-decoration: none;
 }
 
-.nav-items>ul>li:hover {
+.nav-items>ul>li>a:hover {
     background-color: rgb(220, 51, 8);
-    text-decoration: underline;
+    
 }
 
 /* ================= Resturant Display =================== */
@@ -150,6 +151,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #000;
 }
 
 .resturant-card .information .first-row .star {
@@ -180,6 +182,7 @@
     text-align: right;
     font-size: 14px;
     font-weight: 500;
+    color: #000;
 }
 
 
