@@ -23,7 +23,7 @@ const Dish = (props) => {
                             <span>({menu.card.info.ratings.aggregatedRating.ratingCountV2})</span>
                         </>
                     ) : (
-                        '  '
+                        ''
                     )}
                 </p>
                 <p className="dish_desc">{menu.card.info.description}</p>

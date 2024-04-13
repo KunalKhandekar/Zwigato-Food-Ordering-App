@@ -1,6 +1,7 @@
 import RestrauntCard from "./ResturantCard";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
@@ -27,6 +28,11 @@ const Body = () => {
         setfilteredResturantsList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log("result =" + jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     };
+
+
+    if (!useOnlineStatus()){
+        return <h1>You're Offline !!! Please Check Your WIFI....</h1>
+    }
 
 
     return (listOfResturants == 0) ?

@@ -13,6 +13,7 @@ const RestaurantMenu = () => {
 
     if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
 
+
     const {
         name,
         cuisines,
@@ -24,7 +25,6 @@ const RestaurantMenu = () => {
     } = restaurantDetails?.info;
 
     return (
-
         <div className="main-menu-container">
             <div className="top-info">
                 <h2>{name}</h2>
@@ -66,7 +66,7 @@ const RestaurantMenu = () => {
                     <React.Fragment key={index}>
                         {menuList?.card?.card?.itemCards && menuList.card.card.itemCards.map((menuItem) => (
                             <Dish key={menuItem.card.info.id} menu={menuItem} />
-                        ))};
+                        ))}
                     </React.Fragment>
                 ))}
             </div>
