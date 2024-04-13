@@ -1,31 +1,17 @@
-// import { MENU_API } from "../utils/constants";
-import { useEffect, useState } from "react";
-import ShimmerUI from "./ShimmerUI";
-import { useParams } from 'react-router-dom';
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils, faStar, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { useParams } from 'react-router-dom';
+import ShimmerUI from "./ShimmerUI";
+import React from 'react';
+import Dish from './Dish';
 
 const RestaurantMenu = () => {
 
-    const [restaurantDetails, setrestaurantDetails] = useState([]);
-    const [menuDetails, setmenuDetails] = useState([]);
     const { resID } = useParams();
+    const {restaurantDetails, menuDetails} = useRestaurantMenu(resID);
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    const fetchMenu = async () => {
-        const data1 = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0748&lng=72.8856&restaurantId=` + resID);
-        const json1 = await data1.json();
-        setrestaurantDetails(json1?.data?.cards[2]?.card?.card);
-        setmenuDetails(json1?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-        console.log(json1?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-    };
-
-    if (restaurantDetails == 0) return <ShimmerUI />
-
+    if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
 
     const {
         name,
@@ -35,10 +21,7 @@ const RestaurantMenu = () => {
         totalRatingsString,
         sla,
         feeDetails,
-    } = restaurantDetails.info;
-
-
-
+    } = restaurantDetails?.info;
 
     return (
 
@@ -78,81 +61,17 @@ const RestaurantMenu = () => {
                 <FontAwesomeIcon icon={faUtensils} style={{ color: '#c0c0c0' }} />
             </div>
 
-            {/* <div className="dishes-info">
-            {menuDetails.map(menuList => (
-                menuList.card.card.itemCards.map(menuItem => (
-                    <div className="dish">
-                <div className="left-side">
-
-                    <h2 className="dish_name">{menuItem.card.info.name}</h2>
-
-                    <p className="dish_price">
-                        <FontAwesomeIcon icon={faRupeeSign} /> {(menuItem.card.info.defaultPrice / 100) || (menuItem.card.info.price / 100)}
-                    </p>
-
-                    <p className="dish_rating">
-                        <FontAwesomeIcon className='icon' icon={faStar} /> {menuItem.card.info.ratings.aggregatedRating.rating} <span>({menuItem.card.info.ratings.aggregatedRating.ratingCountV2})</span>
-                    </p>
-
-                    <p className="dish_desc">{menuItem.card.info.description}</p>
-
-                </div>
-
-                <div className="right-side">
-                    <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menuItem.card.info.imageId}`} alt="dish" />
-                    <div className="add">ADD</div>
-                </div>
-            </div>
-                ))
-                
-                
-            ))}
-                
-
-            </div> */}
-
             <div className="dishes-info">
                 {menuDetails.map((menuList, index) => (
                     <React.Fragment key={index}>
-                        {menuList?.card?.card?.itemCards && menuList.card.card.itemCards.map(menuItem => (
-                            <div className="dish" key={menuItem.card.info.id}>
-                                <div className="left-side">
-                                    <h2 className="dish_name">{menuItem.card.info.name}</h2>
-                                    <p className="dish_price">
-                                        <FontAwesomeIcon icon={faRupeeSign} /> {(menuItem.card.info.defaultPrice / 100) || (menuItem.card.info.price / 100)}
-                                    </p>
-
-
-
-                                    <p className="dish_rating">
-                                        {menuItem.card.info.ratings.aggregatedRating.rating ? (
-                                            <>
-                                                <FontAwesomeIcon className='icon' icon={faStar} />
-                                                {menuItem.card.info.ratings.aggregatedRating.rating}
-                                                <span>({menuItem.card.info.ratings.aggregatedRating.ratingCountV2})</span>
-                                            </>
-                                        ) : (
-                                            '  '
-                                        )}
-                                    </p>
-
-
-
-                                    <p className="dish_desc">{menuItem.card.info.description}</p>
-                                </div>
-                                <div className="right-side">
-                                    <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menuItem.card.info.imageId}`} alt="dish" />
-                                    <div className="add">ADD</div>
-                                </div>
-                            </div>
-                        ))}
+                        {menuList?.card?.card?.itemCards && menuList.card.card.itemCards.map((menuItem) => (
+                            <Dish key={menuItem.card.info.id} menu={menuItem} />
+                        ))};
                     </React.Fragment>
                 ))}
             </div>
-
-
         </div>
-    )
+    );
 };
 
 export default RestaurantMenu;

@@ -36,7 +36,7 @@ const appRputer = createBrowserRouter([
             },
             {
                 path: 'restaurants/:resID',
-                element : <RestaurantMenu/>,
+                element : <RestaurantMenu />,
             }
         ],
         errorElement: <RouteError />
