@@ -26,7 +26,7 @@ const Body = () => {
 
         setlistOfResturants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilteredResturantsList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log("result =" + jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        // console.log("result =" + jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     };
 
 
@@ -42,11 +42,11 @@ const Body = () => {
         :
 
         (
-            <div className='main-container'>
+            <div className='max-w-[1400] m-auto'>
 
-                <div className="filter">
+                <div className="flex items-center py-4 gap-8">
 
-                    <button className="filter-btn" onClick={() => {
+                    <button className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-lg" onClick={() => {
                         const filteredList = listOfResturants.filter((resturant) => (
                             resturant.info.avgRating > 4
                         ));
@@ -56,11 +56,11 @@ const Body = () => {
                         Top Rated Returants
                     </button >
 
-                    <div className="search">
+                    <div className="">
                         <input
                             type="text"
                             placeholder="Search"
-                            className="search-input"
+                            className="px-3 py-2 text-black font-semibold rounded-lg border-2 border-solid border-black outline-none mr-2"
                             value={searchText}
                             onChange={(e) => {
                                 setsearchText(e.target.value)
@@ -68,7 +68,7 @@ const Body = () => {
                         />
 
                         <button
-                            className="search-btn"
+                            className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-lg"
                             onClick={() => {
 
                                 // For Filtering from names
@@ -99,7 +99,7 @@ const Body = () => {
                 </div>
 
 
-                <div className="restruant-container">
+                <div className="flex justify-center flex-wrap gap-4">
                     {filteredResturantsList.map(resturant => (
                         <RestrauntCard ResData={resturant} key={resturant.info.id}/>
                     ))}

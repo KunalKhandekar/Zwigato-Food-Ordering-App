@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import Header from './component/Header';
 import Body from './component/Body';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-// import About from './component/About';
 import Contact from './component/Contact';
 import RouteError from './component/RouteError';
 import RestaurantMenu from './component/RestaurantMenu'

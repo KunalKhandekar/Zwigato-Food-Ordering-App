@@ -1,5 +1,4 @@
 import React from "react";
-import styles from '../CSS/user.css'
 
 class UserClass extends React.Component {
 
