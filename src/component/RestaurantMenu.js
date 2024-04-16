@@ -3,13 +3,14 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from 'react-router-dom';
 import ShimmerUI from "./ShimmerUI";
-import React from 'react';
+import React, { useState } from 'react';
 import DishContainer from './DishContainer';
 
 const RestaurantMenu = () => {
 
     const { resID } = useParams();
     const {restaurantDetails, menuDetails} = useRestaurantMenu(resID);
+    const [display, setDisplay] = useState(0);
 
     if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
 
@@ -63,7 +64,11 @@ const RestaurantMenu = () => {
 
             <div className="dishes-info">
                 {menuDetails.map((menuList, index)=> (
-                    <DishContainer key={index} data={menuList}/>
+                    <DishContainer
+                    key={index}
+                    data={menuList}
+                    showItems={index == display ? true : false}
+                    setState={() => setDisplay(index)}/>
                 ))}
             </div>
         </div>

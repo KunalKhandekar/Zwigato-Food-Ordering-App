@@ -20,7 +20,7 @@ const Body = () => {
         // const locationJSON = await locationData.json();
 
         // const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`);
-        const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856`);
+        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856`);
 
         const jsonData = await data.json();
 

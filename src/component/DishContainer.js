@@ -2,11 +2,10 @@ import { useState } from "react";
 import Dish from './Dish'
 
 const DishContainer = (props) => {
-    const { data } = props;
-    const [display, setDisplay] = useState(false);
+    const { data, showItems, setState} = props;
 
     const handleClick = () => {
-        setDisplay(!display)
+        setState();
     };
 
 
@@ -17,7 +16,7 @@ const DishContainer = (props) => {
             <span>🔼</span>
             </div>
 
-            {display && data?.card?.card?.itemCards.map((items, index)=>(
+            {showItems && data?.card?.card?.itemCards.map((items, index)=>(
                 <Dish menu={items} key={index}/>
             ))}
 
