@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import appStore from './utils/Redux/appStore';
 import Cart from './component/Cart';
 
-const About = lazy(()=> import('./component/About'))
+const About = lazy(()=> import('./component/About/About'))
 
 const App = () => {
     return (

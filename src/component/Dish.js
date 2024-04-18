@@ -14,9 +14,9 @@ const Dish = (props) => {
     };
 
     return (
-        <div className="flex justify-between border-b border-gray-600 border-solid pt-4 pb-10 last:border-b-0">
-            <div className="">
-                <h2 className="text-xl font-bold">{menu.card.info.name}</h2>
+        <div className="flex justify-between items-center border-b border-gray-600 border-solid pt-4 pb-10 last:border-b-0 gap-3 mx-2">
+            <div className="w-8/12">
+                <h2 className="text-lg font-semibold">{menu.card.info.name}</h2>
                 <p className='text-sm mb-2 font-semibold' >
                     <FontAwesomeIcon icon={faRupeeSign} /> {(menu.card.info.defaultPrice / 100) || (menu.card.info.price / 100)}
                 </p>
@@ -31,11 +31,11 @@ const Dish = (props) => {
                         ''
                     )}
                 </p>
-                <p className="w-[490px] text-gray-600">{menu.card.info.description}</p>
+                <p className="w-12/12 text-gray-600">{menu.card.info.description}</p>
             </div>
-            <div className="w-52 h-52 relative">
-                <img className='w-full h-full rounded-xl' src={(!menu.card.info.imageId) ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' : IMG_URL+menu.card.info.imageId} alt="dish" />
-                <div className="absolute -bottom-4 left-[50px] px-10 py-2 bg-white text-green-600 font-bold rounded-lg shadow cursor-pointer hover:bg-gray-100" onClick={() => AddToCart(menu)}>ADD</div>
+            <div className="w-36 h-28 relative">
+                <img className='w-full h-full object-cover rounded-xl' src={(!menu.card.info.imageId) ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' : IMG_URL+menu.card.info.imageId} alt="dish" />
+                <div className="absolute -bottom-4 left-8 px-6 py-1 bg-white text-green-600 font-bold rounded-lg shadow cursor-pointer hover:bg-gray-100 text-sm xsm:left-5" onClick={() => AddToCart(menu)}>ADD</div>
             </div>
         </div>
     );

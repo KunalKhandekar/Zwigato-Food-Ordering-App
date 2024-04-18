@@ -16,23 +16,21 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        // const locationData = await fetch('https://ipapi.co/json');
-        // const locationJSON = await locationData.json();
-
-        // const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`);
-        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856`);
+        const locationData = await fetch('https://ipapi.co/json');
+        const locationJSON = await locationData.json();
+        
+        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`);
 
         const jsonData = await data.json();
-
+    
         setlistOfResturants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilteredResturantsList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        // console.log("result =" + jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     };
 
 
     if (!useOnlineStatus()){
         return <h1>You're Offline !!! Please Check Your WIFI....</h1>
-    }
+    };
 
 
     return (listOfResturants == 0) ?
@@ -42,7 +40,7 @@ const Body = () => {
         :
 
         (
-            <div className='max-w-[1400] m-auto'>
+            <div className='max-w-[1500] m-auto'>
 
                 <div className="flex items-center py-4 gap-8">
 
@@ -51,7 +49,7 @@ const Body = () => {
                             resturant.info.avgRating > 4
                         ));
                         setfilteredResturantsList(filteredList);
-                        console.log(filteredList)
+                        console.log(filteredList);
                     }}>
                         Top Rated Returants
                     </button >
@@ -63,7 +61,7 @@ const Body = () => {
                             className="px-3 py-2 text-black font-semibold rounded-lg border-2 border-solid border-black outline-none mr-2"
                             value={searchText}
                             onChange={(e) => {
-                                setsearchText(e.target.value)
+                                setsearchText(e.target.value);
                             }}
                         />
 
@@ -99,7 +97,7 @@ const Body = () => {
                 </div>
 
 
-                <div className="flex justify-center flex-wrap gap-4">
+                <div className="flex justify-center flex-wrap gap-4 m-7">
                     {filteredResturantsList.map(resturant => (
                         <RestrauntCard ResData={resturant} key={resturant.info.id}/>
                     ))}
