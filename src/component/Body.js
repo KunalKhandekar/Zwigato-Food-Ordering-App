@@ -2,7 +2,7 @@ import RestrauntCard from "./ResturantCard";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import { isMobile } from "react-device-detect";
 
 const Body = () => {
 
@@ -41,15 +41,28 @@ const Body = () => {
 
 
     const fetchData = async () => {
+
         const locationData = await fetch('https://ipapi.co/json');
         const locationJSON = await locationData.json();
 
-        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`);
+        const url =
+            isMobile ?
+                `https://www.swiggy.com/mapi/homepage/getCards?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
+                :
+                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
+
+        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
 
         const jsonData = await data.json();
 
-        setlistOfResturants(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setfilteredResturantsList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        const apiData =
+            isMobile ?
+                jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+                :
+                jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+        setlistOfResturants(apiData);
+        setfilteredResturantsList(apiData);
     };
 
 
@@ -84,7 +97,7 @@ const Body = () => {
                     </div>
 
                     <div className="button_container flex gap-4 flex-wrap items-center justify-center">
-                    <button className="px-4 py-1 shadow border border-solid border-red-500 font-medium rounded-2xl bg-red-500 text-white">
+                        <button className="px-4 py-1 shadow border border-solid border-red-500 font-medium rounded-2xl bg-red-500 text-white">
                             Reset
                         </button >
                         <button className="px-4 py-1 bg-white shadow text-orange-500 border border-solid border-orange-500 font-medium rounded-2xl focus:bg-orange-500 focus:text-white" onClick={() => {
@@ -108,7 +121,7 @@ const Body = () => {
                         <button className="px-4 py-1 bg-white shadow text-orange-500 border border-solid border-orange-500 font-medium rounded-2xl focus:bg-orange-500 focus:text-white">
                             Rs. 300 - 600
                         </button >
-                        
+
                     </div>
 
 

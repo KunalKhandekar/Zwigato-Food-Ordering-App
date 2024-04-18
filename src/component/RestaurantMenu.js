@@ -14,7 +14,7 @@ const RestaurantMenu = () => {
 
     if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
 
-    console.log(restaurantDetails.info)
+    // console.log(restaurantDetails.info)
 
 
     const {
