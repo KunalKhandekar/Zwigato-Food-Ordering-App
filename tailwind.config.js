@@ -21,6 +21,7 @@ module.exports = {
       'sm': {'max': '680px'},
       'ssm': {'max': '590px'},
       'xsm': {'max': '450px'},
+      'xxsm': {'max': '370px'},
     }
   },
   plugins: [],
