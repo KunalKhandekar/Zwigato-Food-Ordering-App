@@ -13,12 +13,11 @@ const useRestaurantMenu = (resID) => {
         const locationData = await fetch('https://ipapi.co/json');
         const locationJSON = await locationData.json();
         const url = isMobile ?
-        `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
+        `https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
         :
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`
+        `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`
         ;
-        const main_url = url;
-        const response = await fetch('https://thingproxy-760k.onrender.com/fetch/'+main_url);
+        const response = await fetch(url);
         const json1 = await response.json();
         const apiData = isMobile ? json1?.data?.cards[5]  : json1?.data?.cards[4]
         setrestaurantDetails(json1?.data?.cards[2]?.card?.card);
