@@ -38,20 +38,19 @@ const Home = () => {
                 <img src={logo} className='w-48' />
             </div>
 
-            <div className='flex gap-10 justify-center items-center py-14 lg:flex-col-reverse'>
+            <div className='flex gap-10 justify-center items-center py-14 lg:flex-col lg:justify-center'>
                 <div className=''>
                     <h2 className='text-5xl capitalize font-semibold mb-2 sm:text-3xl xsm:text-2xl sm:mb-1 xsm:mb-0'>Satisfy <span className='text-[#ed811c]'>your cravings</span>,</h2>
 
                     <h2 className='text-3xl font-normal sm:text-2xl xsm:text-xl'>Discover a whole new way to find your <span className='text-[#ed811c] font-medium'>favourite food</span>.</h2>
 
-                    <div className='flex gap-4 mt-5 text-lg font-semibold xsm:text-sm xxxsm:text-xs'>
+                    <div className='flex gap-4 mt-5 text-lg font-semibold xsm:text-sm xxxsm:text-xs lg:justify-center'>
 
                         <Link to='/restaurants'>
                         <button className='px-7 py-2 rounded-3xl  shadow bg-[#ed811c] text-white hover:bg-[#de8f46]' onClick={handleLocationClick}><FontAwesomeIcon icon={faLocationCrosshairs} style={{ color: "#ffffff", }} /> Location</button>
                         </Link>
                         <Link to='/restaurants'>
-                        <button className='px-7 py-2 rounded-3xl bg-black text-white shadow-lg hover:bg-slate-700' onClick={handleDemoClick}><FontAwesomeIcon icon={faCode} style={{ color: "#ffffff", }} />
-                            Demo
+                        <button className='px-7 py-2 rounded-3xl bg-black text-white shadow-lg hover:bg-slate-700' onClick={handleDemoClick}><FontAwesomeIcon icon={faCode} style={{ color: "#ffffff", }} /> Demo
                         </button>
                         </Link>
 
@@ -65,7 +64,7 @@ const Home = () => {
             </div>
 
             <div className='absolute inset-x-0 flex justify-center bottom-0 mb-4 text-center text-xl font-normal xsm:text-sm'>
-                <h2>Developed By <Link to='https://github.com/KunalKhandekar' className='text-[#ed811c] font-semibold'>@KunalKhandekar</Link></h2>
+                <h2>Developed By <Link to='https://github.com/KunalKhandekar' className='text-[#ed811c] font-semibold underline'>@KunalKhandekar</Link></h2>
             </div>
         </div>
     )
