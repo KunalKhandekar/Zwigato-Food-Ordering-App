@@ -10,55 +10,60 @@ import userContext from './utils/userContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/Redux/appStore';
 import Cart from './component/Cart';
+import Home from './component/Home';
 
-const About = lazy(()=> import('./component/About/About'))
+const About = lazy(() => import('./component/About/About'))
 
 const App = () => {
     return (
         <Provider store={appStore}>
-        <userContext.Provider value={{loggedInUser : 'Kunal Khandekar'}}>
-        <Header/>
-        <Outlet/>
-        </userContext.Provider>
+            <userContext.Provider value={{ loggedInUser: 'Kunal Khandekar' }}>
+                <Header />
+                <Outlet />
+            </userContext.Provider>
         </Provider>
     )
 };
 
-const appRputer = createBrowserRouter([
+const appRouter = createBrowserRouter([
     {
         path: '/',
-        element : <App/>,
+        element: <Home />
+    },
+    {
+        path: '/data',
+        element: <App />,
         children: [
             {
-                path: '/',
-                element : <Body/>
+                path: '/data',
+                element: <Body />
             },
             {
-                path: '/about',
-                element : (
+                path: '/data/about',
+                element: (
                     <Suspense fallback={<h1>Loading........</h1>}>
-                        <About/>
+                        <About />
                     </Suspense>
                 )
             },
             {
-                path: '/contact',
-                element : <Contact/>
+                path: '/data/contact',
+                element: <Contact />
             },
             {
-                path: 'restaurants/:resID',
-                element : <RestaurantMenu />,
+                path: '/data/restaurants/:resID',
+                element: <RestaurantMenu />,
             },
             {
-                path: '/cart',
-                element : <Cart />
+                path: '/data/cart',
+                element: <Cart />
             }
         ],
         errorElement: <RouteError />
     },
-    
+
 ])
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
-root.render(<RouterProvider router={appRputer}/>);
+root.render(<RouterProvider router={appRouter} />);
