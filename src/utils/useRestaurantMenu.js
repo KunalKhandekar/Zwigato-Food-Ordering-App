@@ -15,7 +15,7 @@ const useRestaurantMenu = (resID) => {
         const url = isMobile ?
         `https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
         :
-        `https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`
+        `https://thingproxy-760k.onrender.com/fetch/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8947446&lng=75.8301169&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`
         ;
         const response = await fetch(url);
         const json1 = await response.json();
