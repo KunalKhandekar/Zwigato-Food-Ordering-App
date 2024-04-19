@@ -3,16 +3,22 @@ import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { isMobile } from "react-device-detect";
+import LocationContext from "../utils/LocationContext";
+import { useContext } from "react";
 
 const Body = () => {
 
     let [listOfResturants, setlistOfResturants] = useState([]);
     let [filteredResturantsList, setfilteredResturantsList] = useState([]);
     let [searchText, setsearchText] = useState('');
+    const { location } =  useContext(LocationContext);
+    const { latitude, longitude } = location;
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        if (latitude !== null && longitude !== null) {
+            fetchData();
+        }
+    }, [latitude, longitude]);
 
     const search = (text) => {
 
@@ -40,65 +46,27 @@ const Body = () => {
     }
 
 
-    // const fetchData = async () => {
-
-    //     const locationData = await fetch('https://ipapi.co/json');
-    //     const locationJSON = await locationData.json();
-
-    //     const url =
-    //         isMobile ?
-    //             `https://www.swiggy.com/mapi/homepage/getCards?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
-    //             :
-    //             `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
-
-    //     const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
-
-    //     const jsonData = await data.json();
-
-    //     const apiData =
-    //         isMobile ?
-    //             jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
-    //             :
-    //             jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-
-    //     setlistOfResturants(apiData);
-    //     setfilteredResturantsList(apiData);
-    // };
-
     const fetchData = async () => {
         try {
-            // Get user's current location using navigator.geolocation API
-            const position = await getCurrentPosition();
-            const { latitude, longitude } = position.coords;
-    
-            const lat = Number(latitude) + 0;
-            const lng = Number(longitude) + 0;
-    
             const url = isMobile ?
-                `https://www.swiggy.com/mapi/homepage/getCards?lat=${lat}&lng=${lng}` :
-                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}`;
-    
+                `https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude}&lng=${longitude}` :
+                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+            console.log(url)
             const dataPromise = fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
             const [dataResponse] = await Promise.all([dataPromise]);
             const jsonData = await dataResponse.json();
-    
+
             const apiData = isMobile ?
                 jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants :
                 jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    
+
             setlistOfResturants(apiData);
             setfilteredResturantsList(apiData);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
-    
-    const getCurrentPosition = () => {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-    };
-    
+
 
 
     if (!useOnlineStatus()) {

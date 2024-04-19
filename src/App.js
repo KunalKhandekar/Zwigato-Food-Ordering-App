@@ -9,13 +9,16 @@ import { Provider } from 'react-redux';
 import appStore from './utils/Redux/appStore';
 import Cart from './component/Cart';
 import Home from './component/Home';
-import About from './component/About/About'
+import About from './component/About/About';
+import { LocationProvider } from './utils/LocationContext';
 
 
 const App = () => {
     return (
         <Provider store={appStore}>
+            <LocationProvider>
             <RouterProvider router={appRouter} />
+            </LocationProvider>
         </Provider>
     )
 };
@@ -45,6 +48,10 @@ const appRouter = createBrowserRouter([
         path: '/cart',
         element: <><Header /><Cart /></>,
         errorElement : <RouteError />
+    },
+    {
+        path: '*',
+        element: <Home />
     }
 
 ])

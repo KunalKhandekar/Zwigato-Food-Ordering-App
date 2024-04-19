@@ -1,11 +1,37 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png'
 import chef from '../images/chef.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationCrosshairs, faCode } from '@fortawesome/free-solid-svg-icons';
+import LocationContext from '../utils/LocationContext';
 
 const Home = () => {
+
+    const { updateLocation } = useContext(LocationContext);
+
+    const handleLocationClick = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          updateLocation(latitude, longitude); // Update context with latitude and longitude
+        }, (error) => {
+          console.error('Error getting location:', error);
+        });
+      };
+
+      const handleDemoClick = async () => {
+        try {
+          const locationData = await fetch('https://ipapi.co/json');
+          const locationJSON = await locationData.json();
+          const { latitude, longitude } = locationJSON;
+          updateLocation(latitude, longitude); // Update context with latitude and longitude
+        } catch (error) {
+          console.error('Error fetching location data:', error);
+        }
+      };
+
+
     return (
         <div className='max-w-[1200px] w-full max-h-full m-auto pt-4 px-12'>
             <div className='flex justify-center items-center '>
@@ -21,12 +47,14 @@ const Home = () => {
                     <div className='flex gap-4 mt-5 text-lg font-semibold xsm:text-sm xxxsm:text-xs'>
 
                         <Link to='/restaurants'>
-                            <button className='px-7 py-2 rounded-3xl  shadow bg-[#ed811c] text-white hover:bg-[#de8f46]'><FontAwesomeIcon icon={faLocationCrosshairs} style={{ color: "#ffffff", }} /> Location</button>
+                        <button className='px-7 py-2 rounded-3xl  shadow bg-[#ed811c] text-white hover:bg-[#de8f46]' onClick={handleLocationClick}><FontAwesomeIcon icon={faLocationCrosshairs} style={{ color: "#ffffff", }} /> Location</button>
+                        </Link>
+                        <Link to='/restaurants'>
+                        <button className='px-7 py-2 rounded-3xl bg-black text-white shadow-lg hover:bg-slate-700' onClick={handleDemoClick}><FontAwesomeIcon icon={faCode} style={{ color: "#ffffff", }} />
+                            Demo
+                        </button>
                         </Link>
 
-                        <Link to='/restaurants'>
-                            <button className='px-7 py-2 rounded-3xl bg-black text-white shadow-lg hover:bg-slate-700'><FontAwesomeIcon icon={faCode} style={{ color: "#ffffff", }} /> Demo</button>
-                        </Link>
 
                     </div>
                 </div>

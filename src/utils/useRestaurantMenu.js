@@ -1,24 +1,27 @@
 import { useState, useEffect } from "react";
 import { isMobile } from "react-device-detect";
+import LocationContext from "./LocationContext";
+import { useContext } from "react";
 
 const useRestaurantMenu = (resID) => {
     const [restaurantDetails, setRestaurantDetails] = useState([]);
     const [menuDetails, setMenuDetails] = useState([]);
+    const { location } =  useContext(LocationContext);
+    const { latitude, longitude } = location;
 
     useEffect(() => {
-        fetchMenu();
-    }, []);
+        if (latitude !== null && longitude !== null) {
+            fetchMenu();
+        }
+    }, [latitude, longitude]);
 
     const fetchMenu = async () => {
         try {
-            const locationData = await fetch('https://ipapi.co/json');
-            const locationJSON = await locationData.json();
-            console.log("Location JSON:", locationJSON);
     
             const url = isMobile ?
-                `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
+                `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
                 :
-                `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${locationJSON.latitude}&lng=${locationJSON.longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`;
+                `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`;
     
             const response = await fetch(`https://proxy.cors.sh/${url}`, {
                 headers: {
