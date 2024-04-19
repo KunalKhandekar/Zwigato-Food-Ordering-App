@@ -20,11 +20,11 @@ const Home = () => {
 
                     <div className='flex gap-4 mt-5 text-lg font-semibold xsm:text-sm xxxsm:text-xs'>
 
-                        <Link to='/app'>
+                        <Link to='/restaurants'>
                             <button className='px-7 py-2 rounded-3xl  shadow bg-[#ed811c] text-white hover:bg-[#de8f46]'><FontAwesomeIcon icon={faLocationCrosshairs} style={{ color: "#ffffff", }} /> Location</button>
                         </Link>
 
-                        <Link to='/app'>
+                        <Link to='/restaurants'>
                             <button className='px-7 py-2 rounded-3xl bg-black text-white shadow-lg hover:bg-slate-700'><FontAwesomeIcon icon={faCode} style={{ color: "#ffffff", }} /> Demo</button>
                         </Link>
 

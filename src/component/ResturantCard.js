@@ -16,7 +16,7 @@ const RestrauntCard = (props) => {
     } = ResData?.info;
 
     return (
-        <Link to={'/app/restaurants/' + ResData.info.id} style={{ textDecoration: 'none' }} className="ssm:w-full">
+        <Link to={'/restaurants/' + ResData.info.id} style={{ textDecoration: 'none' }} className="ssm:w-full">
 
             <div className="p-3 rounded-lg transition-all hover:bg-[#ececec] hover:shadow-lg slg:shadow">
 
