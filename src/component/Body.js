@@ -40,30 +40,65 @@ const Body = () => {
     }
 
 
+    // const fetchData = async () => {
+
+    //     const locationData = await fetch('https://ipapi.co/json');
+    //     const locationJSON = await locationData.json();
+
+    //     const url =
+    //         isMobile ?
+    //             `https://www.swiggy.com/mapi/homepage/getCards?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
+    //             :
+    //             `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
+
+    //     const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
+
+    //     const jsonData = await data.json();
+
+    //     const apiData =
+    //         isMobile ?
+    //             jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
+    //             :
+    //             jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+    //     setlistOfResturants(apiData);
+    //     setfilteredResturantsList(apiData);
+    // };
+
     const fetchData = async () => {
-
-        const locationData = await fetch('https://ipapi.co/json');
-        const locationJSON = await locationData.json();
-
-        const url =
-            isMobile ?
-                `https://www.swiggy.com/mapi/homepage/getCards?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
-                :
-                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationJSON.latitude + '0'}&lng=${locationJSON.longitude + '0'}`
-
-        const data = await fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
-
-        const jsonData = await data.json();
-
-        const apiData =
-            isMobile ?
-                jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
-                :
-                jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-
-        setlistOfResturants(apiData);
-        setfilteredResturantsList(apiData);
+        try {
+            // Get user's current location using navigator.geolocation API
+            const position = await getCurrentPosition();
+            const { latitude, longitude } = position.coords;
+    
+            const lat = Number(latitude) + 0;
+            const lng = Number(longitude) + 0;
+    
+            const url = isMobile ?
+                `https://www.swiggy.com/mapi/homepage/getCards?lat=${lat}&lng=${lng}` :
+                `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}`;
+    
+            const dataPromise = fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
+            const [dataResponse] = await Promise.all([dataPromise]);
+            const jsonData = await dataResponse.json();
+    
+            const apiData = isMobile ?
+                jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants :
+                jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    
+            setlistOfResturants(apiData);
+            setfilteredResturantsList(apiData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
+    
+    const getCurrentPosition = () => {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+    };
+    
 
 
     if (!useOnlineStatus()) {
