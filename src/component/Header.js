@@ -83,16 +83,16 @@ const Header = () => {
 
     return (
     <div className="flex items-center justify-between bg-[#fafafa] px-10 py-1 shadow sticky top-0 z-50 max-w-[1580] m-auto sm:flex-col sm:px-2 box-border slg:py-3 sm:py-1">
-    <div className="top-nav flex justify-between items-center sm:w-full sm:py-2">
+    <div className="top-nav flex justify-between items-center sm:w-full sm:py-2 sm:px-5">
         <div className="logo">
             <img src={logo} alt="logo" className="w-[180px] mix-blend-multiply  slg:w-[120px]" />
         </div>
-        <div className="hidden sm:block  px-2.5 py-2 shadow-inner w-10 h-10  rounded-[50%] cursor-pointer hover:bg-[#e9e9e9]" onClick={toggleMenu}>
+        <div className="hidden sm:block px-2.5 py-2 shadow-sm w-10 h-10  rounded-[50%] cursor-pointer hover:bg-[#e9e9e9]" onClick={toggleMenu}>
             { navStatus ? <FontAwesomeIcon className="h-7 sm:h-6" icon={faXmark} style={{ color: "#ff8000", }} /> : <FontAwesomeIcon className="h-7 sm:h-6" icon={faBars} style={{color: "#ff8000",}} />}
         </div>
     </div>
 
-    <div className={`${navStatus ? 'sm:block' : 'sm:hidden'} block sm:absolute top-16 sm:py-5 sm:mt-[10px] sm:bg-white sm:w-full sm:border-b-2 sm:border-slate-100`}>
+    <div className={`${navStatus ? 'sm:block' : 'sm:hidden'} block sm:absolute top-16 sm:py-5 sm:mt-[0px] sm:bg-white sm:w-full sm:border-b-2 sm:border-slate-100`}>
         <ul className="flex gap-6 capitalize slg:text-sm sm:flex-col sm:items-center">
             <li className="slg:hidden">Status : {(useOnlineStatus()) ? 'Online 🟢' : 'Offline 🔴'}</li>
 
