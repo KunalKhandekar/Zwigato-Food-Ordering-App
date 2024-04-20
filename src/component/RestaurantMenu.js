@@ -89,7 +89,7 @@ const RestaurantMenu = () => {
                 ))}
             </div>
 
-            <div className='max-w-[900px] m-auto p-6 pb-2 mt-6 rounded-tl-lg rounded-tr-lg slg:mx-6 bg-slate-300'>
+            <div className='max-w-[900px] m-auto p-6 pb-[50px] mt-6 rounded-tl-lg rounded-tr-lg slg:mx-6 bg-slate-300'>
                 <div className='flex gap-5 items-center mb-6 pb-8'>
                     <img className='w-20' src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i" alt="FSSAI" />
 

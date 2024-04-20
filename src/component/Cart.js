@@ -14,8 +14,7 @@ const Cart = () => {
     };
 
     return (
-        <div className="w-6/12 m-auto p-6 my-3 rounded-xl shadow-md">
-            
+        <div className="max-w-[900px] m-auto p-6 my-3 rounded-xl shadow-md pb-10 mt-6  slg:mx-6">
 
             <h1 className="text-center text-2xl font-bold mb-4">Cart Details</h1>
 
@@ -24,8 +23,7 @@ const Cart = () => {
                 <div className="font-semibold text-lg text-center">
                     <h1>Your Cart is Empty !!</h1>
                     <h1 className="mb-4">ADD Items to Cart</h1>
-                    <Link to="/" className="px-6 py-2 bg-orange-400 text-white font-semibold rounded-lg">Home</Link>
-
+                    <Link to="/restaurants" className="px-6 py-2 bg-orange-400 text-white font-semibold rounded-lg">Home</Link>
                 </div>
 
                 :

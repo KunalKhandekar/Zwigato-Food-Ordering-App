@@ -6,7 +6,6 @@ import { isMobile } from "react-device-detect";
 import LocationContext from "../utils/LocationContext";
 import { useContext } from "react";
 import NoCard from "./Error/NoCard";
-import { toast, ToastContainer } from "react-toastify";
 
 
 const Body = () => {
@@ -35,11 +34,9 @@ const Body = () => {
             });
             const [dataResponse] = await Promise.all([dataPromise]);
             const jsonData = await dataResponse.json();
-
             const apiData = isMobile ?
                 jsonData?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants :
                 jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
             setlistOfResturants(apiData);
             setfilteredResturantsList(apiData);
         } catch (error) {
