@@ -24,14 +24,14 @@ const Cart = () => {
                 <div className="font-semibold text-lg text-center">
                     <h1>Your Cart is Empty !!</h1>
                     <h1 className="mb-4">ADD Items to Cart</h1>
-                    <Link to="/" className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-lg">Home</Link>
+                    <Link to="/" className="px-6 py-2 bg-orange-400 text-white font-semibold rounded-lg">Home</Link>
 
                 </div>
 
                 :
 
                 <div>
-                    <h2 className="px-4 py-2 rounded-lg shadow-sm bg-orange-500 text-white text-center cursor-pointer inline" onClick={claerTheCart}>Clear Cart</h2>
+                    <h2 className="px-4 py-2 rounded-lg shadow-sm bg-orange-400 text-white text-center cursor-pointer inline" onClick={claerTheCart}>Clear Cart</h2>
                     <div>
 
                         {cartItems.map((items, index) => (

@@ -55,9 +55,9 @@ const Dish = (props) => {
                 <img className='w-full h-full object-cover rounded-xl' src={(!menu.card.info.imageId) ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png' : IMG_URL + menu.card.info.imageId} alt="dish" />
                 {itemExists ?
                         <div className="flex justify-between w-20 box-border absolute -bottom-4 left-8   bg-white text-green-600 font-bold rounded-lg shadow text-sm xsm:left-5">
-                            <button className='px-3 py-1 rounded-lg cursor-pointer hover:bg-gray-100' onClick={()=> RemoveFromCart(menu)}>-</button>
+                            <button className='px-3 py-1 rounded-lg cursor-pointer' onClick={()=> RemoveFromCart(menu)}>-</button>
                             <p className='py-1'>{cartItems[existingItemIndex].count}</p>
-                            <button className='px-3 py-1 rounded-lg cursor-pointer hover:bg-gray-100' onClick={()=> AddToCart(menu)}>+</button>
+                            <button className='px-3 py-1 rounded-lg cursor-pointer' onClick={()=> AddToCart(menu)}>+</button>
                         </div> : <div className="box-border absolute -bottom-4 left-8 px-6 py-1 bg-white text-green-600 font-bold rounded-lg shadow cursor-pointer hover:bg-gray-100 text-sm xsm:left-5" onClick={() => AddToCart(menu)}>ADD</div>}
                 
             </div>

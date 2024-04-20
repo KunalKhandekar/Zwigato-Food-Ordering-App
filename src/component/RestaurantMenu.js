@@ -1,21 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from 'react-router-dom';
 import ShimmerUI from "./ShimmerUI";
 import React from 'react';
 import DishContainer from './DishContainer';
-
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const RestaurantMenu = () => {
 
     const { resID } = useParams();
     const { restaurantDetails, menuDetails } = useRestaurantMenu(resID);
+    const cartItems = useSelector((store) => store.cart.items);
 
     if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
 
-
-
+    
     const {
         name,
         cuisines,
@@ -29,7 +30,18 @@ const RestaurantMenu = () => {
 
     return (
         <>
+            {(cartItems.length >= 1) ? <Link to='/cart'>
+            <div className='max-w-[900px] m-auto'>
+                    <div className='fixed bottom-0 z-20 flex justify-between px-3 py-3 bg-orange-400 w-[900px] max-w-[900px] slg:w-full'>
+                        <span className='text-lg font-semibold text-white'>{cartItems.length} Dish{(cartItems.length == 1) ? '': 'es' } in Cart</span>
+                        <button className='font-lg font-semibold'><Link to="/cart" className="px-4 text-white font-semibold rounded-lg">
+                    <FontAwesomeIcon icon={faShoppingCart} style={{ color: "#ffffff", }} /> View Cart ({cartItems.length})
+                </Link></button>
+                    </div>
+                </div>
+            </Link> : ''}
             <div className="max-w-[900px] m-auto p-6 pb-2 mt-6 rounded-lg shadow-lg slg:mx-6">
+                
             
                 <div>
                     <h2 className='font-semibold text-3xl pb-3 xsm:text-2xl xxsm:text-xl'>{name}</h2>

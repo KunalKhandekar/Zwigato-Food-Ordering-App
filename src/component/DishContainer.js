@@ -6,7 +6,7 @@ import { faCaretSquareUp } from "@fortawesome/free-solid-svg-icons/faCaretSquare
 import { faSquareCaretUp } from "@fortawesome/free-solid-svg-icons/faSquareCaretUp";
 
 const DishContainer = (props) => {
-    const { data} = props;
+    const { data } = props;
     const [state, setState] = useState(false);
 
     const handleClick = () => {

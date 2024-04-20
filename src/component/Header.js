@@ -29,19 +29,19 @@ const Header = () => {
             <li className="slg:hidden">Status : {(useOnlineStatus()) ? 'Online 🟢' : 'Offline 🔴'}</li>
 
             <li>
-                <Link to="/restaurants" className="px-4 py-1.5 bg-orange-500 text-white font-semibold rounded-lg" onClick={toggleMenu}>
+                <Link to="/restaurants" className="px-4 py-1.5 bg-orange-400 text-white font-semibold rounded-lg" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faUtensils} style={{ color: "#ffffff", }} /> Restaurants
                 </Link>
             </li>
 
             <li>
-                <Link to="/about" className="px-4 py-1.5 bg-orange-500 text-white font-semibold rounded-lg" onClick={toggleMenu}>
+                <Link to="/about" className="px-4 py-1.5 bg-orange-400 text-white font-semibold rounded-lg" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faAddressCard} style={{ color: "#ffffff", }} /> About Us
                 </Link>
             </li>
 
             <li className="font-lg font-semibold">
-                <Link to="/cart" className="px-4 py-1.5 bg-orange-500 text-white font-semibold rounded-lg" onClick={toggleMenu}>
+                <Link to="/cart" className="px-4 py-1.5 bg-orange-400 text-white font-semibold rounded-lg" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faShoppingCart} style={{ color: "#ffffff", }} /> Cart ({cartItems.length})
                 </Link>
             </li>
