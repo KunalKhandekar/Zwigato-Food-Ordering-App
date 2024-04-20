@@ -6,6 +6,7 @@ import { isMobile } from "react-device-detect";
 import LocationContext from "../utils/LocationContext";
 import { useContext } from "react";
 import NoCard from "./Error/NoCard";
+import RouteError from "./Error/RouteError";
 
 const Body = () => {
 
@@ -26,8 +27,11 @@ const Body = () => {
             const url = isMobile ?
                 `https://www.swiggy.com/mapi/homepage/getCards?lat=${latitude}&lng=${longitude}` :
                 `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
-            console.log(url)
-            const dataPromise = fetch(`https://thingproxy-760k.onrender.com/fetch/${url}`);
+            const dataPromise = await fetch(`https://proxy.cors.sh/${url}`, {
+                headers: {
+                'x-cors-api-key': 'temp_08a8b551696538e5f949f708a4483487'
+                }
+              });
             const [dataResponse] = await Promise.all([dataPromise]);
             const jsonData = await dataResponse.json();
 
@@ -114,7 +118,7 @@ const Body = () => {
 
     return (listOfResturants == 0) ?
 
-        <ShimmerUI />
+        <ShimmerUI/>
 
         :
 

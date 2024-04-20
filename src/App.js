@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Header from './component/Header';
 import Body from './component/Body';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import RouteError from './component/RouteError';
+import RouteError from './component/Error/RouteError'
 import RestaurantMenu from './component/RestaurantMenu'
 import { Provider } from 'react-redux';
 import appStore from './utils/Redux/appStore';
