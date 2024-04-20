@@ -6,7 +6,8 @@ import { isMobile } from "react-device-detect";
 import LocationContext from "../utils/LocationContext";
 import { useContext } from "react";
 import NoCard from "./Error/NoCard";
-import RouteError from "./Error/RouteError";
+import { toast, ToastContainer } from "react-toastify";
+
 
 const Body = () => {
 
@@ -29,9 +30,9 @@ const Body = () => {
                 `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
             const dataPromise = await fetch(`https://proxy.cors.sh/${url}`, {
                 headers: {
-                'x-cors-api-key': 'temp_08a8b551696538e5f949f708a4483487'
+                    'x-cors-api-key': 'temp_08a8b551696538e5f949f708a4483487'
                 }
-              });
+            });
             const [dataResponse] = await Promise.all([dataPromise]);
             const jsonData = await dataResponse.json();
 
@@ -98,7 +99,7 @@ const Body = () => {
 
     const LessThan300 = () => {
         const filteredList = listOfResturants.filter((resturant) => (
-            (resturant.info.costForTwo).slice(1,4).trim() <= 300
+            (resturant.info.costForTwo).slice(1, 4).trim() <= 300
         ));
         setfilteredResturantsList(filteredList);
     };
@@ -106,7 +107,7 @@ const Body = () => {
 
     const MoreThan300 = () => {
         const filteredList = listOfResturants.filter((resturant) => (
-            (resturant.info.costForTwo).slice(1,4).trim() > 300 && (resturant.info.costForTwo).slice(1,4).trim() <= 600
+            (resturant.info.costForTwo).slice(1, 4).trim() > 300 && (resturant.info.costForTwo).slice(1, 4).trim() <= 600
         ));
         setfilteredResturantsList(filteredList);
     };
@@ -118,13 +119,14 @@ const Body = () => {
 
     return (listOfResturants == 0) ?
 
-        <ShimmerUI/>
+        <ShimmerUI />
 
         :
 
         (
             <div className='max-w-[1500] m-auto'>
 
+                
                 <div className="flex items-center py-4 gap-8 justify-between mx-5 lg:flex-col lg:text-sm">
 
                     <div className="">
@@ -166,7 +168,7 @@ const Body = () => {
 
 
                 <div className="flex justify-center flex-wrap gap-4 m-7">
-                {filteredResturantsList.length == 0 ? <NoCard /> : filteredResturantsList.map(resturant => (
+                    {filteredResturantsList.length == 0 ? <NoCard /> : filteredResturantsList.map(resturant => (
                         <RestrauntCard ResData={resturant} key={resturant.info.id} />
                     ))}
                 </div>

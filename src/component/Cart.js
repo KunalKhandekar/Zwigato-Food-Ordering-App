@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/Redux/cartSlice";
 import Dish from "./Dish";
 
+
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Cart = () => {
 
     return (
         <div className="w-6/12 m-auto p-6 my-3 rounded-xl shadow-md">
+            
 
             <h1 className="text-center text-2xl font-bold mb-4">Cart Details</h1>
 
@@ -33,7 +35,7 @@ const Cart = () => {
                     <div>
 
                         {cartItems.map((items, index) => (
-                            <Dish menu={items} key={index} />
+                            <Dish menu={items.menu} key={index} />
                         ))}
                     </div>
                 </div>}

@@ -30,6 +30,7 @@ const RestaurantMenu = () => {
     return (
         <>
             <div className="max-w-[900px] m-auto p-6 pb-2 mt-6 rounded-lg shadow-lg slg:mx-6">
+            
                 <div>
                     <h2 className='font-semibold text-3xl pb-3 xsm:text-2xl xxsm:text-xl'>{name}</h2>
                     <div className="border-2 border-black border-solid flex flex-col gap-2 p-3 rounded-lg shadow-xl">

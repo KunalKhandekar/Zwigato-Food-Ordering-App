@@ -11,13 +11,28 @@ import Cart from './component/Cart';
 import Home from './component/Home';
 import About from './component/About/About';
 import { LocationProvider } from './utils/LocationContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 
 const App = () => {
     return (
         <Provider store={appStore}>
             <LocationProvider>
-            <RouterProvider router={appRouter} />
+                <ToastContainer
+                    position="top-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                />
+                <RouterProvider router={appRouter} />
             </LocationProvider>
         </Provider>
     )
@@ -27,27 +42,27 @@ const appRouter = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
-        errorElement : <RouteError />
+        errorElement: <RouteError />
     },
     {
         path: '/restaurants',
         element: <><Header /><Body /></>,
-        errorElement : <RouteError />
+        errorElement: <RouteError />
     },
     {
         path: '/about',
         element: <><Header /><About /></>,
-        errorElement : <RouteError />
+        errorElement: <RouteError />
     },
     {
         path: '/restaurants/:resID',
         element: <><Header /><RestaurantMenu /></>,
-        errorElement : <RouteError />
+        errorElement: <RouteError />
     },
     {
         path: '/cart',
         element: <><Header /><Cart /></>,
-        errorElement : <RouteError />
+        errorElement: <RouteError />
     },
     {
         path: '*',
