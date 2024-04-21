@@ -20,15 +20,8 @@ const Home = () => {
         });
       };
 
-      const handleDemoClick = async () => {
-        try {
-          const locationData = await fetch('https://ipapi.co/json');
-          const locationJSON = await locationData.json();
-          const { latitude, longitude } = locationJSON;
-          updateLocation(latitude, longitude); // Update context with latitude and longitude
-        } catch (error) {
-          console.error('Error fetching location data:', error);
-        }
+      const handleDemoClick = () => {
+          updateLocation(19.202367945356468, 72.83034203119135);
       };
 
 
