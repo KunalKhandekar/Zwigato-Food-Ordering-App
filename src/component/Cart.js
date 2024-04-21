@@ -45,6 +45,7 @@ const Cart = () => {
 
                     <div>
 
+                            <Link to={`/restaurants/${ResID}`}>
                         <div className="flex gap-4 items-start border-b-2 border-gray-300 pb-3">
 
                             <div className="w-12 h-12 rounded-lg">
@@ -55,6 +56,7 @@ const Cart = () => {
                                 <h2 className="text-sm font-medium mt-0.5 text-gray-500 sm:text-xs">{ResArea}</h2>
                             </div>
                         </div>
+                            </Link>
                         {/* Item Container */}
                         <div className="my-3 mx-2">
 
@@ -91,7 +93,11 @@ const Cart = () => {
                             <h2>&#8377;{platformFees}</h2>
                         </div>
                         <div className="flex justify-between w-full px-2">
-                            <h2>GST Charges</h2>
+                            <h2>Delivery Charges</h2>
+                            <h2>&#8377;{deliveryCharges}</h2>
+                        </div>
+                        <div className="flex justify-between w-full px-2">
+                            <h2>14% GST Charges</h2>
                             <h2>&#8377;{GST_Charges}</h2>
                         </div>
                     </div>
