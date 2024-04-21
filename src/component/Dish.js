@@ -16,6 +16,8 @@ const Dish = (props) => {
     const itemExists = cartItems.some((item) => item.menu.card.info.id === menu.card.info.id);
     const existingItemIndex = cartItems.findIndex((item) => item.menu.card.info.id === menu.card.info.id);
 
+    
+
     const AddToCart = (menu, ResID, ResName, ResArea) => {
         if (RestaurantID === null || RestaurantID === ResID) {
             dispatch(addItems({ menu, ResID, ResName, ResArea }));
@@ -39,11 +41,10 @@ const Dish = (props) => {
 
      return (input === 'cart') ?  
 
-    (<div className="flex justify-between items-center border-b border-gray-600 border-solid pt-4 pb-10 last:border-b-0 gap-3 mx-2">
+    (<div className="flex justify-between items-center border-b border-gray-600 border-solid pt-4 pb-10 last:border-b-0 gap-3 mx-2 xsm:pt-2 xsm:pb-8">
             <div className="w-8/12">
                 <h2 className="text-lg font-semibold xsm:text-sm">{menu.card.info.name}</h2>
-                <p className='text-sm mt-2 font-semibold xsm:text-xs' >
-                    <FontAwesomeIcon icon={faRupeeSign} /> {Math.trunc((menu.card.info.defaultPrice / 100)*cartItems[existingItemIndex].count) || Math.trunc((menu.card.info.price / 100)*cartItems[existingItemIndex].count)}
+                <p className='text-sm mt-2 font-semibold xsm:text-xs' >&#8377;{Math.trunc((menu.card.info.defaultPrice / 100)*cartItems[existingItemIndex].count) || Math.trunc((menu.card.info.price / 100)*cartItems[existingItemIndex].count)}
                 </p>
             </div>
             <div className="w-32 h-24 sm:w-28 sm:h-20 relative flex justify-center">
@@ -64,8 +65,7 @@ const Dish = (props) => {
         <div className="flex justify-between items-center border-b border-gray-600 border-solid pt-4 pb-10 last:border-b-0 gap-3 mx-2">
             <div className="w-8/12">
                 <h2 className="text-lg font-semibold">{menu.card.info.name}</h2>
-                <p className='text-sm mb-2 font-semibold' >
-                    <FontAwesomeIcon icon={faRupeeSign} /> {(menu.card.info.defaultPrice / 100) || (menu.card.info.price / 100)}
+                <p className='text-sm mb-2 font-semibold' >&#8377;{(menu.card.info.defaultPrice / 100) || (menu.card.info.price / 100)}
                 </p>
                 <p className="mb-1 text-green-700">
                     {menu.card.info.ratings.aggregatedRating.rating ? (
