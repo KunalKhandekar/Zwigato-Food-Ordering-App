@@ -16,17 +16,19 @@ const Cart = () => {
     console.log(ResName);
 
     return (
+<>
+        {(cartItems.length >= 1) ? <Link to='/cart'>
+        <div className='max-w-[900px] m-auto'>
+            <div className='fixed bottom-0 z-20 flex justify-between px-20 py-3 bg-black w-[900px] max-w-[900px] slg:w-full sm:px-10'>
+                <span className='text-lg font-semibold text-white'>To Pay</span>
+                <button className='font-lg font-semibold'><Link className="px-4 cursor-text text-white font-semibold rounded-lg"><FontAwesomeIcon icon={faRupeeSign} />  {Math.trunc(TotalPrice)}
+                </Link></button>
+            </div>
+        </div>
+    </Link> : ''}
         <div className="max-w-[900px] m-auto p-6 my-3 rounded-xl shadow-md pb-10 mt-6  slg:mx-6">
 
-            {(cartItems.length >= 1) ? <Link to='/cart'>
-                <div className='max-w-[900px] m-auto'>
-                    <div className='fixed bottom-0 z-20 flex justify-between px-3 py-3 bg-white w-[900px] max-w-[900px] slg:w-full'>
-                        <span className='text-lg font-semibold text-black'>To Pay</span>
-                        <button className='font-lg font-semibold'><Link className="px-4 cursor-text text-black font-semibold rounded-lg"><FontAwesomeIcon icon={faRupeeSign} />  {Math.trunc(TotalPrice)}
-                        </Link></button>
-                    </div>
-                </div>
-            </Link> : ''}
+            
 
             {(cartItems.length == 0) ?
 
@@ -42,7 +44,9 @@ const Cart = () => {
                 :
 
                 <div>
+                   
                     <div className="flex gap-4 items-start border-b-2 border-gray-300 pb-3">
+                        
                         <div className="w-12 h-12 rounded-lg">
                             <img src={ResImg} className="w-full h-full object-cover rounded-lg" />
                         </div>
@@ -62,7 +66,7 @@ const Cart = () => {
 
 
         </div>
-
+        </>
     );
 };
 
