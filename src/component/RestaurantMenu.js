@@ -26,7 +26,10 @@ const RestaurantMenu = () => {
         sla,
         feeDetails,
         labels,
+        id,
+        areaName
     } = restaurantDetails?.info;
+
 
     return (
         <>
@@ -85,7 +88,11 @@ const RestaurantMenu = () => {
                 {menuDetails.map((menuList, index) => (
                     <DishContainer
                         key={index}
-                        data={menuList} />
+                        data={menuList}
+                        ResID={id}
+                        ResName={name}
+                        ResArea={areaName}
+                        />
                 ))}
             </div>
 

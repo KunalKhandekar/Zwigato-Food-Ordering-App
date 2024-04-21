@@ -1,39 +1,61 @@
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { clearCart } from "../utils/Redux/cartSlice";
+import { useSelector } from "react-redux";
+import cartImg from '../images/EmptyCart.webp'
 import Dish from "./Dish";
-
+import ResImg from '../images/ResImg.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRupeeSign } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
-    const dispatch = useDispatch();
+    const TotalPrice = useSelector((store) => store.cart.TotalPrice);
+    const ResID = useSelector((store) => store.cart.RestaurantID);
+    const ResName = useSelector((store) => store.cart.RestaurantName);
+    const ResArea = useSelector((store) => store.cart.RestaurantArea);
 
-    const claerTheCart = () => {
-        dispatch(clearCart());
-    };
+    console.log(ResName);
 
     return (
         <div className="max-w-[900px] m-auto p-6 my-3 rounded-xl shadow-md pb-10 mt-6  slg:mx-6">
 
-            <h1 className="text-center text-2xl font-bold mb-4">Cart Details</h1>
+            {(cartItems.length >= 1) ? <Link to='/cart'>
+                <div className='max-w-[900px] m-auto'>
+                    <div className='fixed bottom-0 z-20 flex justify-between px-3 py-3 bg-white w-[900px] max-w-[900px] slg:w-full'>
+                        <span className='text-lg font-semibold text-black'>To Pay</span>
+                        <button className='font-lg font-semibold'><Link className="px-4 cursor-text text-black font-semibold rounded-lg"><FontAwesomeIcon icon={faRupeeSign} />  {Math.trunc(TotalPrice)}
+                        </Link></button>
+                    </div>
+                </div>
+            </Link> : ''}
 
             {(cartItems.length == 0) ?
 
                 <div className="font-semibold text-lg text-center">
-                    <h1>Your Cart is Empty !!</h1>
-                    <h1 className="mb-4">ADD Items to Cart</h1>
-                    <Link to="/restaurants" className="px-6 py-2 bg-orange-400 text-white font-semibold rounded-lg">Home</Link>
+                    <div className="flex justify-center">
+                        <img src={cartImg} className="max-w-[600px] w-full" />
+                    </div>
+                    <h1 className="text-3xl font-semibold sm:text-2xl xsm:text-xl">Your Cart is Empty</h1>
+                    <h1 className="mb-7 mt-2 text-lg font-normal sm:text-base xsm:text-xs xsm:font-medium">There's nothing in your cart yet. Why not check out our menu for something that catches your interest?</h1>
+                    <Link to="/restaurants" className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg xsm:text-sm">Add Dishes</Link>
                 </div>
 
                 :
 
                 <div>
-                    <h2 className="px-4 py-2 rounded-lg shadow-sm bg-orange-400 text-white text-center cursor-pointer inline" onClick={claerTheCart}>Clear Cart</h2>
-                    <div>
+                    <div className="flex gap-4 items-start border-b-2 border-gray-300 pb-3">
+                        <div className="w-12 h-12 rounded-lg">
+                            <img src={ResImg} className="w-full h-full object-cover rounded-lg" />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-semibold w-[500px] text-ellipsis overflow-hidden whitespace-nowrap ssm:w-[280px] sm:text-lg xsm:text-sm xsm:w-[160px]">{ResName}</h2>
+                            <h2 className="text-sm font-medium mt-0.5 text-gray-500 sm:text-xs">{ResArea}</h2>
+                        </div>
+                    </div>
+                    {/* Item Container */}
+                    <div className="my-3 mx-2">
 
-                        {cartItems.map((items, index) => (
-                            <Dish menu={items.menu} key={index} />
+                        {cartItems.map((item, index) => (
+                            <Dish menu={item.menu} key={index} ResID={ResID} input={'cart'} />
                         ))}
                     </div>
                 </div>}

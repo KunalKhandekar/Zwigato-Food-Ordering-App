@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
-import Dish from './Dish'
-import { faCaretSquareUp } from "@fortawesome/free-solid-svg-icons/faCaretSquareUp";
-import { faSquareCaretUp } from "@fortawesome/free-solid-svg-icons/faSquareCaretUp";
+import Dish from './Dish';
 
 const DishContainer = (props) => {
-    const { data } = props;
+    const { data, ResID, ResName, ResArea } = props;
     const [state, setState] = useState(false);
 
     const handleClick = () => {
@@ -22,7 +20,7 @@ const DishContainer = (props) => {
             </div>
 
             {state && data?.card?.card?.itemCards.map((items, index)=>(
-                <Dish menu={items} key={index}/>
+                <Dish menu={items} key={index} ResID={ResID} input={'dish'} ResName={ResName} ResArea={ResArea}/>
             ))}
 
         </div>
