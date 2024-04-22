@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from 'react-router-dom';
-import ShimmerUI from "./ShimmerUI";
 import React from 'react';
 import DishContainer from './DishContainer';
 import { useSelector } from 'react-redux';

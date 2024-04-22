@@ -1,11 +1,11 @@
 import RestrauntCard from "./ResturantCard";
 import { useState, useEffect } from "react";
-import ShimmerUI from "./ShimmerUI";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { isMobile } from "react-device-detect";
 import LocationContext from "../utils/LocationContext";
 import { useContext } from "react";
 import NoCard from "./Error/NoCard";
+import ShimmerResCard from "./SimmerUI/ShimmerResCard";
 
 
 const Body = () => {
@@ -116,9 +116,9 @@ const Body = () => {
 
     return (listOfResturants == 0) ?
 
-        <ShimmerUI />
+        <ShimmerResCard />
 
-        :
+        : 
 
         (
             <div className='max-w-[1500] m-auto'>
