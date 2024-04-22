@@ -6,14 +6,16 @@ import React from 'react';
 import DishContainer from './DishContainer';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ShimmerMenu from './SimmerUI/ShimmerMenu';
 
 const RestaurantMenu = () => {
 
     const { resID } = useParams();
+    console.log(resID)
     const { restaurantDetails, menuDetails } = useRestaurantMenu(resID);
     const cartItems = useSelector((store) => store.cart.items);
 
-    if (restaurantDetails == 0 || menuDetails == 0) return <ShimmerUI />;
+    if (restaurantDetails == 0 || menuDetails == 0) return < ShimmerMenu/>;
 
     
     const {

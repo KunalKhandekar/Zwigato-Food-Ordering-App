@@ -1,6 +1,7 @@
 import React from 'react'
 import {useRouteError} from 'react-router-dom';
-import ApiError from './ApiError.png'
+import ApiError from './ApiError.png';
+import { Link } from 'react-router-dom';
 
 const RouteError = () => {
   const err = useRouteError();

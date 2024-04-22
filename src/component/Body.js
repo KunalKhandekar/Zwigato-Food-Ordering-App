@@ -6,6 +6,7 @@ import LocationContext from "../utils/LocationContext";
 import { useContext } from "react";
 import NoCard from "./Error/NoCard";
 import ShimmerResCard from "./SimmerUI/ShimmerResCard";
+import { Link } from "react-router-dom";
 
 
 const Body = () => {

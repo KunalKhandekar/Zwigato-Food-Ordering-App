@@ -22,10 +22,10 @@ const useRestaurantMenu = (resID) => {
                 `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${resID}&isMenuUx4=true&submitAction=ENTER`
                 :
                 `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${resID}&catalog_qa=undefined&submitAction=ENTER`;
-    
+            console.log(url);
             const response = await fetch(`https://proxy.cors.sh/${url}`, {
                 headers: {
-                'x-cors-api-key': 'temp_08a8b551696538e5f949f708a4483487'
+                'x-cors-api-key': 'temp_5f4aba8a1b270f97b7b8aac9d4b85f05'
                 }
               });
             const jsonData = await response.json();

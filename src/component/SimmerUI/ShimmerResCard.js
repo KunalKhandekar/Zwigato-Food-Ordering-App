@@ -1,5 +1,5 @@
-import React from 'react'
-import './ShimmerAnimation.css'
+import React from 'react';
+import './ShimmerAnimation.css';
 
 const ShimmerResCard = () => {
   return (
