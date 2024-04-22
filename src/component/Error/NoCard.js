@@ -1,5 +1,5 @@
+import error from './noCard.jpg';
 import React from 'react';
-import error from './noCard.jpg'
 
 const NoCard = () => {
   return (

@@ -4,7 +4,7 @@ import './ShimmerAnimation.css';
 const ShimmerMenu = () => {
     return (
         <>
-            <div className="btn_menu max-w-[900px] m-auto p-6 pb-2 mt-6 rounded-lg slg:mx-6 bg-[#ececec]">
+            <div className="Animation_For_Menu max-w-[900px] m-auto p-6 pb-2 mt-6 rounded-lg slg:mx-6 bg-[#ececec]">
                 <div>
                     <h2 className="font-semibold text-3xl mb-3 xsm:text-2xl xxsm:text-xl inline-block bg-[#c4c4c45d] rounded-xl text-[#c4c4c40d]">
                         Chinese Wok

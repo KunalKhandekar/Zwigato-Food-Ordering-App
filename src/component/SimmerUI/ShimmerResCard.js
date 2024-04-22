@@ -47,7 +47,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -96,7 +96,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -145,7 +145,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -194,7 +194,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -243,7 +243,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -292,7 +292,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -341,7 +341,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -390,7 +390,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -439,7 +439,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -488,7 +488,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -537,7 +537,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -586,7 +586,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -635,7 +635,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -684,7 +684,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -733,7 +733,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>
@@ -782,7 +782,7 @@ const ShimmerResCard = () => {
                 />
               </div>
               <div className="w-[320] 2xl:w-[280] xl:w-[240] lg:w-[260] slg:w-[230] md:w-[280] sm:w-[240] ssm:w-full">
-                <div className="flex justify-between items-center my-2 btn_top">
+                <div className="flex justify-between items-center my-2 Animation_For_Card">
                   <h4 className="w-8/12 text-lg font-semibold text-ellipsis overflow-hidden whitespace-nowrap bg-[#c4c4c45d] rounded-xl text-[#c4c4c41d]">
                     Poetry By Love &amp; Cheesecake
                   </h4>

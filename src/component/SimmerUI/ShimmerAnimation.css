@@ -27,7 +27,8 @@
     animation: shine 1.75s infinite linear;
     /* Animation */
 }
-.btn_top::before {
+
+.Animation_For_Card::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -41,7 +42,8 @@
     animation: shine 1.75s infinite linear;
     /* Animation */
 }
-.btn_menu::before {
+
+.Animation_For_Menu::before {
     content: '';
     position: absolute;
     width: 100%;
