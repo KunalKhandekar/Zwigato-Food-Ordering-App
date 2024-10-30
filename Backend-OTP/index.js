@@ -4,7 +4,17 @@ const bodyParser = require('body-parser');
 const { sendOtpEmail } = require('./Utils/mailer');
 
 const app = express();
-app.use(cors());
+const allowedOrigins = ['https://zwigato-0.netlify.app', 'http://localhost:1234'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use(bodyParser.json());
 
 let otpStore = {}; // Store OTPs for verification

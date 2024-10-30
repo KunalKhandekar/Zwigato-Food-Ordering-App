@@ -13,6 +13,7 @@ const LoginSignup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+<<<<<<< HEAD
   useEffect(() => {
     if (localStorage.getItem("isAuthenticated") === "true") {
       navigate("/");
@@ -20,6 +21,9 @@ const LoginSignup = () => {
   }, [navigate]);
 
   const link = "https://zwigato-food-ordering-app.onrender.com";
+=======
+  const link = "https://zwigato-food-ordering-app.onrender.com"
+>>>>>>> 567a1fdbc4343fe4b5f2b41a4f29f84747274670
 
   const sendOtp = async (e) => {
     e.preventDefault();
