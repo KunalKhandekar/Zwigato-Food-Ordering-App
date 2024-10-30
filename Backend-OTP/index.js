@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { sendOtpEmail } = require('./Utils/mailer');
 
 const app = express();
-const allowedOrigins = ['http://example1.com', 'http://example2.com', 'http://localhost:3000'];
+const allowedOrigins = ['https://zwigato-0.netlify.app', 'http://localhost:1234'];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
