@@ -13,12 +13,6 @@ const LoginSignup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (localStorage.getItem("isAuthenticated") === "true") {
-      navigate("/");
-    }
-  }, [navigate]);
-
   const link = "https://zwigato-food-ordering-app.onrender.com";
 
   const sendOtp = async (e) => {
@@ -57,11 +51,9 @@ const LoginSignup = () => {
         otp,
       });
       if (response.data.success) {
-        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem('isAuthenticated', 'true');
         toast.success("OTP verified successfully!");
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        window.location.href = "/";
       } else {
         setError(response.data.message);
         toast.error(response.data.message);

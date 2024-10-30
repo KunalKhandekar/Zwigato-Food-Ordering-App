@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, useLocation, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLocation, Navigate, Outlet } from 'react-router-dom';
 import { LocationProvider } from './utils/LocationContext'; 
 import RestaurantMenu from './component/RestaurantMenu';
 import RouteError from './component/Error/RouteError';
@@ -16,22 +16,60 @@ import Home from './component/Home';
 import LoginSignup from './component/Login';
 import Wallet from './component/Wallet';
 
-
 // Function to check authentication status from localStorage
-const isUserAuthenticated = () => {
-    return localStorage.getItem('isAuthenticated') === 'true';
-};
+const isUserAuthenticated = () => localStorage.getItem('isAuthenticated') === 'true';
 
-
+// Component to handle scrolling on route change
 const ScrollToTop = () => {
     const { pathname } = useLocation();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
-
     return null;
 };
+
+// Layout component for authenticated routes
+const AuthenticatedLayout = () => (
+    <>
+        <ScrollToTop />
+        <Header />
+        <Outlet /> {/* Renders child components */}
+    </>
+);
+
+// Higher-order component for protected routes
+const ProtectedRoute = ({ element }) => {
+    return isUserAuthenticated() ? element : <Navigate to="/auth/in" />;
+};
+
+// Routes configuration
+const appRouter = createBrowserRouter([
+    {
+        path: '/',
+        element: isUserAuthenticated() ? <Home /> : <Navigate to="/auth/in" />,
+        errorElement: <RouteError />
+    },
+    {
+        path: '/auth/in',
+        element: !isUserAuthenticated() ? <LoginSignup /> : <Navigate to="/" />,
+        errorElement: <RouteError />
+    },
+    {
+        element: <AuthenticatedLayout />, // Wrap authenticated routes
+        children: [
+            { path: '/restaurants', element: <Restaurant /> },
+            { path: '/about', element: <About /> },
+            { path: '/wallet', element: <Wallet /> },
+            { path: '/restaurants/:resID', element: <RestaurantMenu /> },
+            { path: '/cart', element: <Cart /> },
+        ],
+        errorElement: <RouteError />
+    },
+    {
+        path: '*',
+        element: <RouteError />
+    }
+]);
 
 const App = () => {
     return (
@@ -49,79 +87,10 @@ const App = () => {
                     pauseOnHover
                     theme="dark"
                 />
-                <RouterProvider router={appRouter()} />
+                <RouterProvider router={appRouter} />
             </LocationProvider>
         </Provider>
     );
-};
-
-// Custom router configuration
-const appRouter = () => {
-    const isAuthenticated = isUserAuthenticated();
-
-    return createBrowserRouter([
-        {
-            path: '/auth',
-            element: <LoginSignup />,
-            errorElement: <RouteError />
-        },
-        {
-            path: '/',
-            element: isAuthenticated ? <Home /> : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '/restaurants',
-            element: isAuthenticated ? (
-                <><ScrollToTop /><Header /><Restaurant /></>
-            ) : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '/about',
-            element: isAuthenticated ? (
-                <><ScrollToTop /><Header /><About /></>
-            ) : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '/wallet',
-            element: isAuthenticated ? (
-                <><ScrollToTop /><Header /><Wallet /></>
-            ) : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '/restaurants/:resID',
-            element: isAuthenticated ? (
-                <><ScrollToTop /><Header /><RestaurantMenu /></>
-            ) : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '/cart',
-            element: isAuthenticated ? (
-                <><ScrollToTop /><Header /><Cart /></>
-            ) : (
-                <Navigate to="/auth" /> // Redirect to auth if not authenticated
-            ),
-            errorElement: <RouteError />
-        },
-        {
-            path: '*',
-            element: <Home />
-        }
-    ]);
 };
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));

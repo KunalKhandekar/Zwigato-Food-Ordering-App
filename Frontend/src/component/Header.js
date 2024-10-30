@@ -22,7 +22,8 @@ import {
 
     const handleLogout = () => {
       localStorage.removeItem('isAuthenticated');
-      navigate("/auth");
+      window.location.href = '/auth/in';
+      toast.success('Logged out successfully!');
     };
   
     return (
