@@ -13,7 +13,7 @@ const LoginSignup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const link = "http://localhost:5000"
+  const link = "https://zwigato-food-ordering-app.onrender.com"
 
   const sendOtp = async (e) => {
     e.preventDefault();
