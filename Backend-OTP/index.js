@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const { sendOtpEmail } = require('./Utils/mailer');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:1234", // Set the allowed origin
+}));
 app.use(bodyParser.json());
 
 let otpStore = {}; // Store OTPs for verification
