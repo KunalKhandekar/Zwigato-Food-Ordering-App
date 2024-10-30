@@ -62,10 +62,19 @@ const cartSlice = createSlice({
                 };
                 state.TotalPrice -= dishPrice;
             };
+        },
+        // Reducer function to clear the cart
+        clearCart: (state) => {
+            state.items = [];
+            state.TotalPrice = 0;
+            state.RestaurantID = null;
+            state.RestaurantName = null;
+            state.RestaurantImage = null;
+            state.RestaurantArea = null;
         }
     }
 });
 
 // Exporting actions and reducer
-export const { addItems, removeItems } = cartSlice.actions;
+export const { addItems, removeItems, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
