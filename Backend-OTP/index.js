@@ -4,8 +4,16 @@ const bodyParser = require('body-parser');
 const { sendOtpEmail } = require('./Utils/mailer');
 
 const app = express();
+const allowedOrigins = ['http://example1.com', 'http://example2.com', 'http://localhost:3000'];
 app.use(cors({
-    origin: "http://localhost:1234", // Set the allowed origin
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 app.use(bodyParser.json());
 
